@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "QR Coder reader based on EMVCo",
   "cordova": {
-    "id": "com.pex.sdx.qrcodereader",
+    "id": "cordova-plugin-sdx-qr-code-reader",
     "platforms": [
       "android",
       "ios"
