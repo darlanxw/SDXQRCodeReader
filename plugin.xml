@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.sdx.qrcodereader" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SDXQRCodeReader</name>
+    <js-module name="SDXQRCodeReader" src="www/SDXQRCodeReader.js">
+        <clobbers target="cordova.plugins.SDXQRCodeReader" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="SDXQRCodeReader">
+                <param name="android-package" value="com.sdx.qrcodereader.SDXQRCodeReader" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/SDXQRCodeReader.java" target-dir="src/com/sdx/qrcodereader/SDXQRCodeReader" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="SDXQRCodeReader">
+                <param name="ios-package" value="SDXQRCodeReader" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/SDXQRCodeReader.swift" />
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
+    </platform>
+</plugin>

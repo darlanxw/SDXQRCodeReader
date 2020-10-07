@@ -1,0 +1,23 @@
+{
+  "name": "cordova-plugin-sdx-qr-code-reader",
+  "version": "0.0.1",
+  "description": "QR Coder reader based on EMVCo",
+  "cordova": {
+    "id": "com.pex.sdx.qrcodereader",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darlanxw/SDXQRCodeReader.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "PEX - Sodexo",
+  "license": "ISC"
+}
