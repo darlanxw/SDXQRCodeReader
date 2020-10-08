@@ -22,7 +22,8 @@
             </feature>
         </config-file>
         <source-file src="src/ios/SDXQRCodeReader.swift" />
-        <framework src="src/ios/SDXPaymentConsumer.framework" custom="true" /> 
+        <source-file src="src/ios/SDXPaymentConsumer.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/SDXPaymentConsumer.framework" embed="true" custom="true" /> 
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
     </platform>
 </plugin>
