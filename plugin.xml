@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="com.sdx.qrcodereader" version="0.0.1"
+<plugin id="cordova-plugin-sdx-qr-code-reader" version="0.1.0"
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>SDXQRCodeReader</name>
     <js-module name="SDXQRCodeReader" src="www/SDXQRCodeReader.js">
-        <clobbers target="cordova.plugins.SDXQRCodeReader" />
+        <clobbers target="SDXQRCodeReader" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
@@ -22,8 +22,8 @@
             </feature>
         </config-file>
         <source-file src="src/ios/SDXQRCodeReader.swift" />
-        <source-file src="src/ios/SDXPaymentConsumer.framework" target-dir="lib" framework="true" />
-        <framework src="src/ios/SDXPaymentConsumer.framework" embed="true" custom="true" /> 
+        <source-file src="src/ios/SDXPaymentConsumer.xcframework" target-dir="lib" framework="true" />
+        <framework src="src/ios/SDXPaymentConsumer.xcframework" embed="true" custom="true" /> 
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2" />
     </platform>
 </plugin>

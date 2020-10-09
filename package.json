@@ -1,9 +1,9 @@
 {
   "name": "cordova-plugin-sdx-qr-code-reader",
-  "version": "0.0.1",
-  "description": "QR Coder reader based on EMVCo",
+  "version": "0.1.0",
+  "description": "Sodexo QR Coder reader based on EMVCo",
   "cordova": {
-    "id": "com.pex.sdx.qrcodereader",
+    "id": "cordova-plugin-sdx-qr-code-reader",
     "platforms": [
       "android",
       "ios"
