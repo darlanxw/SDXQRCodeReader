@@ -5,14 +5,14 @@ import SDXPaymentConsumer
 
 @objc(SDXQRCodeReader) class SDXQRCodeReader : CDVPlugin {
     
-  var paymentConsumer: SDXPaymentConsumer?
+  var paymentConsumer: SDXPaymentConsumerInterface?
   var fullScannerView: UIView!
   var callbackId: String!
     
   @objc(scanQRCode:)
   func scanQRCode(_ command: CDVInvokedUrlCommand) {
     self.callbackId = command.callbackId
-    paymentConsumer = SDXPaymentConsumer(delegate: self)
+    paymentConsumer = SDXPaymentConsumerInterface(delegate: self)
     fullScannerView = UIView(frame: self.viewController.view.frame)
     self.viewController.view.addSubview(fullScannerView)
     
@@ -33,7 +33,8 @@ extension SDXQRCodeReader: SDXPaymentConsumerDelegate {
     
     func didFoundPayload(payload: SDXPaymentConsumerPayload) {
         fullScannerView.isHidden = true
-        let sdxTransaction = SDXTransaction(merchantName: payload.merchantName, merchantId: payload.merchantAccountInformation.globalUniqueIdentifier, merchantUserId: payload.merchantAccountInformation.merchantAccountInformation, merchantBranchCode: payload.merchantBranchCode, transactionValue: payload.transactionValue, transactionId: payload.transactionId, currency: payload.currency, dateTime: payload.dateTime, tip: payload.tip)
+        
+        let sdxTransaction = SDXTransaction(merchantName: payload.merchantName, merchantId: payload.merchantId, merchantUserId: payload.merchantUserId, merchantBranchCode: payload.merchantBranchCode, transactionValue: payload.transactionValue, transactionId: payload.transactionId, currency: payload.currency, dateTime: payload.dateTime, tip: payload.tip)
         
         do {
             let data = try JSONEncoder().encode(sdxTransaction)
