@@ -53,8 +53,6 @@ extension SDXQRCodeReader: SDXPaymentConsumerDelegate {
             
             self.commandDelegate.send(result, callbackId: self.callbackId)
         }
-        
-       
     }
     
     func didFailToReadCode(error: SDXPaymentConsumerError) {
