@@ -9,3 +9,6 @@ repositories {
 dependencies {
 	compile 'com.github.sodexo-pex:qr-code-generator:1.0.19'
 }
+
+android.useAndroidX=true
+android.enableJetifier=true
