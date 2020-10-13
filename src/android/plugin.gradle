@@ -10,7 +10,10 @@ dependencies {
 	compile 'com.github.sodexo-pex:qr-code-generator:1.0.19'
 }
 
-compileOptions {
+
+android {
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
+	}
 }
