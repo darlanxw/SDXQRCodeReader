@@ -22,6 +22,6 @@ public class SDXQRCodeReader extends CordovaPlugin {
     }
 
     private void scanQRCode(CallbackContext callbackContext) {
-        callbackContext.success("Chegou!");
+        callbackContext.error("It was not possible to parse the data.");
     }
 }
