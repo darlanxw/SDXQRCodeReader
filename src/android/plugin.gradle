@@ -5,5 +5,5 @@ repositories {
 }
 
 dependencies {
-	compile 'om.github.sodexo-pex:qr-code-generator:1.0.19'
+	compile 'com.github.sodexo-pex:qr-code-generator:1.0.19'
 }
