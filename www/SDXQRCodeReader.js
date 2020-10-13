@@ -2,6 +2,7 @@ var exec = require('cordova/exec');
 var SDXQRCodeReader = function () { }; 
 
 SDXQRCodeReader.scanQRCode = function (onSuccess, onError) {
+    alert("Chegou no JS!!");
     exec(function (param) {
         var sdxTransaction = JSON.parse(param);
         return onSuccess(sdxTransaction)
