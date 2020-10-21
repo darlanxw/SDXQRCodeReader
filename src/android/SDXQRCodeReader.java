@@ -17,6 +17,7 @@ public class SDXQRCodeReader extends CordovaPlugin {
 
   @Override public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     if (action.equals("scanQRCode")) {
+      Toast.makeText(cordova.getContext(), "Chegou no Java!", Toast.LENGTH_SHORT).show();
       this.scanQRCode(callbackContext);
       return true;
     }
