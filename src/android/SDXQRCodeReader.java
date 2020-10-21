@@ -50,7 +50,7 @@ public class SDXQRCodeReader extends CordovaPlugin {
           if (model.getTransactionAmount() != null) {
             json.put("transactionAmount", model.getTransactionAmount());
           }
-          cordova.getActivity().finish();
+          //cordova.getActivity().finish();
           callbackContext.success(json);
           cordova.getActivity().runOnUiThread(new Runnable() {
             @Override public void run() {
