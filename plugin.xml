@@ -14,7 +14,7 @@
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml" />
         <source-file src="src/android/SDXQRCodeReader.java" target-dir="src/com/sdx/qrcodereader/SDXQRCodeReader" />
-        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+        <framework src="src/android/plugin.gradle" custom="true" type="gradleReference" />
     </platform>
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
