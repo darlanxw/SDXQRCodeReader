@@ -3,9 +3,14 @@ var SDXQRCodeReader = function () { };
 
 SDXQRCodeReader.scanQRCode = function (onSuccess, onError) {
     exec(function (param) {
-        alert("Chegou no retorno de sucesso!!");
-        var sdxTransaction = JSON.parse(param);
-        return onSuccess(sdxTransaction)
+        try {
+            var sdxTransaction = JSON.parse(param);
+            alert ("Fez o parse!");            
+            return onSuccess(sdxTransaction)
+        } catch (error) {
+            alert ("Caiu no catch!!");
+            return onSuccess(param)
+        }
     }, onError, "SDXQRCodeReader", "scanQRCode", [null]);
 };
 
