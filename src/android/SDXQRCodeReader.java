@@ -49,20 +49,15 @@ public class SDXQRCodeReader extends CordovaPlugin {
           if (model.getTransactionAmount() != null) {
             json.put("transactionAmount", model.getTransactionAmount());
           }
-          //cordova.getActivity().finish();
+
           callbackContext.success(json);
-          cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override public void run() {
-              Toast.makeText(cordova.getContext(), json.toString(), Toast.LENGTH_SHORT).show();
-            }
-          });
         } catch (JSONException e) {
           callbackContext.error(e.getMessage());
         }
       }
 
       @Override public void error() {
-        callbackContext.error("There was an rror trying to open the camera");
+        callbackContext.error("There was an error trying to open the camera");
       }
     });
   }
