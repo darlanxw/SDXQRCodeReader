@@ -17,7 +17,6 @@ public class SDXQRCodeReader extends CordovaPlugin {
 
   @Override public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     if (action.equals("scanQRCode")) {
-      Toast.makeText(cordova.getContext(), "Chegou no Java!", Toast.LENGTH_SHORT).show();
       this.scanQRCode(callbackContext);
       return true;
     }
@@ -63,7 +62,7 @@ public class SDXQRCodeReader extends CordovaPlugin {
       }
 
       @Override public void error() {
-        callbackContext.error("Error to handle");
+        callbackContext.error("There was an rror trying to open the camera");
       }
     });
   }
