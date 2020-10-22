@@ -66,6 +66,5 @@ public class SDXQRCodeReader extends CordovaPlugin {
         callbackContext.error("Error to handle");
       }
     });
-    callbackContext.error("It was not possible to parse the data.");
   }
 }
