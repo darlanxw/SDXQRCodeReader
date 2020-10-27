@@ -1,0 +1,68 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1 effective-4.2 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name SDXPaymentConsumer
+import AVFoundation
+import AVFoundation/*.AVCaptureDevice*/
+import Foundation
+@_exported import SDXPaymentConsumer
+import Swift
+import UIKit
+import UIKit.UIView
+public enum SDXPaymentConsumerErrorType {
+  case cameraPermissionError
+  case AVCaptureDeviceInputError
+  case deviceCameraNotSuported
+  case invalidEMVcoFormat
+  case informationMissing
+  public static func == (a: SDXPaymentConsumer.SDXPaymentConsumerErrorType, b: SDXPaymentConsumer.SDXPaymentConsumerErrorType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum SDXPaymentConsumerErrorStrings : Swift.String {
+  case cameraPermissionError
+  case AVCaptureDeviceInputError
+  case deviceCameraNotSuported
+  case invalidEMVcoFormat
+  case informationMissing
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SDXPaymentConsumerPayload {
+  public let merchantId: Swift.String
+  public let merchantUserId: Swift.String
+  public let merchantName: Swift.String
+  public let currency: Swift.String
+  public let dateTime: Foundation.Date
+  public let productCode: Swift.String?
+  public let transactionValue: Swift.Double?
+  public let tip: Swift.Double?
+  public let city: Swift.String?
+  public let country: Swift.String?
+  public let transactionId: Swift.String?
+  public let merchantBranchCode: Swift.String?
+  public init?(dict: [Swift.String : Any])
+}
+public class SDXPaymentConsumerInterface {
+  public init(delegate: SDXPaymentConsumer.SDXPaymentConsumerDelegate)
+  public func scan(inView view: UIKit.UIView)
+  public func stopScan()
+  @objc deinit
+}
+public protocol SDXPaymentConsumerDelegate {
+  func didFoundPayload(payload: SDXPaymentConsumer.SDXPaymentConsumerPayload)
+  func didFailToReadCode(error: SDXPaymentConsumer.SDXPaymentConsumerError)
+}
+public struct SDXPaymentConsumerError {
+  public let type: SDXPaymentConsumer.SDXPaymentConsumerErrorType
+  public let message: Swift.String
+}
+extension SDXPaymentConsumer.SDXPaymentConsumerErrorType : Swift.Equatable {}
+extension SDXPaymentConsumer.SDXPaymentConsumerErrorType : Swift.Hashable {}
+extension SDXPaymentConsumer.SDXPaymentConsumerErrorStrings : Swift.Equatable {}
+extension SDXPaymentConsumer.SDXPaymentConsumerErrorStrings : Swift.Hashable {}
+extension SDXPaymentConsumer.SDXPaymentConsumerErrorStrings : Swift.RawRepresentable {}
