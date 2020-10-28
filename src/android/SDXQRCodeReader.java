@@ -1,6 +1,7 @@
 package com.sdx.qrcodereader;
 
 import android.widget.Toast;
+import com.google.gson.Gson;
 import com.sodexo.qrcodegenerator.SDXQRGenerator;
 import com.sodexo.qrcodegenerator.SDXQrCodeListener;
 import com.sodexo.qrcodegenerator.domain.SDXQRCodeTransaction;
@@ -27,30 +28,9 @@ public class SDXQRCodeReader extends CordovaPlugin {
     new SDXQRGenerator().scan(cordova.getContext(), false, false, new SDXQrCodeListener() {
       @Override public void success(SDXQRCodeTransaction model) {
         try {
-          JSONObject json = new JSONObject();
-          json.put("merchantId", model.getMerchantId());
-          json.put("merchantUserId", model.getMerchantUserId());
-          json.put("city", model.getCity());
-          json.put("country", model.getCountry());
-          json.put("currency", model.getCurrency());
-          if (model.getDateTime() != null) {
-            json.put("dateTime", model.getDateTime());
-          }
-          if (model.getMerchantBranchCode() != null) {
-            json.put("merchantBranchCode", model.getMerchantBranchCode());
-          }
-          if (model.getTransactionId() != null) {
-            json.put("transactionId", model.getTransactionId());
-          }
-          json.put("dateTime", model.getDateTime());
-          if (model.getTip() != null) {
-            json.put("tip", model.getTip());
-          }
-          if (model.getTransactionAmount() != null) {
-            json.put("transactionAmount", model.getTransactionAmount());
-          }
-
-          callbackContext.success(json);
+          String sdxTransactionValue = new Gson().toJson(model);
+          JSONObject sdxTransctionObject = new JSONObject(sdxTransactionValue);
+          callbackContext.success(sdxTransctionObject);
         } catch (JSONException e) {
           callbackContext.error(e.getMessage());
         }
