@@ -19,7 +19,7 @@ public struct SDXQRCodePayload {
   public let dateTime: Foundation.Date
   public let nationalIdentifier: Swift.String
   public let productCode: Swift.String?
-  public let transactionValue: Swift.Double?
+  public let transactionValue: Swift.String?
   public let tip: Swift.String?
   public let fee: Swift.String?
   public let city: Swift.String?
