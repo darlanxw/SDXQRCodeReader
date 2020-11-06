@@ -1,0 +1,11 @@
+framework module SDXQRCode {
+  umbrella header "SDXQRCode.h"
+
+  export *
+  module * { export * }
+}
+
+module SDXQRCode.Swift {
+    header "SDXQRCode-Swift.h"
+    requires objc
+}

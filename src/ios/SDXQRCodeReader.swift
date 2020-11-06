@@ -1,18 +1,18 @@
 //
 //  SDXQRCodeReader.swift
 
-import SDXPaymentConsumer
+import SDXQRCode
 
 @objc(SDXQRCodeReader) class SDXQRCodeReader : CDVPlugin {
     
-  var paymentConsumer: SDXPaymentConsumerInterface?
+  var paymentConsumer: SDXQRCodeInterface?
   var fullScannerView: UIView!
   var callbackId: String!
     
   @objc(scanQRCode:)
   func scanQRCode(_ command: CDVInvokedUrlCommand) {
     self.callbackId = command.callbackId
-    paymentConsumer = SDXPaymentConsumerInterface(delegate: self)
+    paymentConsumer = SDXQRCodeInterface(delegate: self)
     fullScannerView = UIView(frame: self.viewController.view.frame)
     self.viewController.view.addSubview(fullScannerView)
     
@@ -29,12 +29,12 @@ import SDXPaymentConsumer
   }
 }
 
-extension SDXQRCodeReader: SDXPaymentConsumerDelegate {
+extension SDXQRCodeReader: SDXQRCodeDelegate {
     
-    func didFoundPayload(payload: SDXPaymentConsumerPayload) {
+    func didFoundPayload(payload: SDXQRCodePayload) {
         fullScannerView.isHidden = true
         
-        let sdxTransaction = SDXTransaction(merchantName: payload.merchantName, merchantId: payload.merchantId, merchantUserId: payload.merchantUserId, merchantBranchCode: payload.merchantBranchCode, transactionValue: payload.transactionValue, transactionId: payload.transactionId, currency: payload.currency, dateTime: payload.dateTime, tip: payload.tip)
+        let sdxTransaction = SDXTransaction(merchantName: payload.merchantName, merchantId: payload.merchantId, merchantUserId: payload.merchantUserId, merchantBranchCode: payload.merchantBranchCode, nationalIdentifier: payload.nationalIdentifier ,transactionValue: payload.transactionValue, transactionId: payload.transactionId, currency: payload.currency, dateTime: "\(payload.dateTime)", tip: payload.fee)
         
         do {
             let data = try JSONEncoder().encode(sdxTransaction)
@@ -55,7 +55,7 @@ extension SDXQRCodeReader: SDXPaymentConsumerDelegate {
         }
     }
     
-    func didFailToReadCode(error: SDXPaymentConsumerError) {
+    func didFailToReadCode(error: SDXQRCodeError) {
         fullScannerView.isHidden = true
         let result = CDVPluginResult(
           status: CDVCommandStatus_ERROR,
@@ -87,9 +87,10 @@ struct SDXTransaction: Codable {
     var merchantId: String
     var merchantUserId: String
     var merchantBranchCode: String?
-    var transactionValue: Double?
+    var nationalIdentifier: String?
+    var transactionValue: String?
     var transactionId: String?
     var currency: String
-    var dateTime: Date
-    var tip: Double?
+    var dateTime: String
+    var tip: String?
 }
