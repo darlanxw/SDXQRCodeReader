@@ -32,12 +32,12 @@ public class SDXQRCodeReader extends CordovaPlugin {
           JSONObject sdxTransctionObject = new JSONObject(sdxTransactionValue);
           callbackContext.success(sdxTransctionObject);
         } catch (JSONException e) {
-          callbackContext.error(e.getMessage());
+          callbackContext.error("There was an error trying to open the camera.");
         }
       }
 
       @Override public void error() {
-        callbackContext.error("There was an error trying to open the camera");
+        callbackContext.error("It was not possible to parse the data.");
       }
     });
   }

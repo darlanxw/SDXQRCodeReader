@@ -48,7 +48,7 @@ extension SDXQRCodeReader: SDXQRCodeDelegate {
         } catch {
             let result = CDVPluginResult(
               status: CDVCommandStatus_ERROR,
-                messageAs: "It was not possible parse the data."
+                messageAs: "There was an error trying to open the camera."
             )
             
             self.commandDelegate.send(result, callbackId: self.callbackId)
