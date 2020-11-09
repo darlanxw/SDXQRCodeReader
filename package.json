@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-sdx-qr-code-reader",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Sodexo QR Coder reader based on EMVCo",
   "cordova": {
     "id": "cordova-plugin-sdx-qr-code-reader",
