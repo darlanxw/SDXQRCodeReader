@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-	compile 'com.github.sodexo-pex:qr-code-generator:1.0.57'
+	compile 'com.sodexo.brs-gitlab-prd.PEX-Mobile:qr-code-generator:1.0.57'
 	implementation 'com.google.code.gson:gson:2.8.6'
 }
 
